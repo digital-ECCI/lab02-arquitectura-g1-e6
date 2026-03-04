@@ -168,8 +168,82 @@ El diagrama de circuito digital para el sumador/restador de 4 bit se muestra en 
 
 #### 1.1 Descripción
 
+La simulación del circuito digital sumador/restador de 4 bits se realizó usando visual studio code, GTKwave. Para esto fue necesario implkementar el código que se muestra a continuación:
+
+```markdown
+```verilog
+`include "mainsumres.v"
+`timescale 1ps/1ps
+
+module mainsumres_tb ();
+
+// se crean registros para las salidas con cables
+
+wire [3:0]s_tb;
+wire c0_tb;
+
+// se crean registros para las entradas
+
+reg [3:0]A_tb;
+reg [3:0]B_tb;
+reg Ci_tb;
+
+// se crea la instancia
+
+mainsumres uut(
+    .outlets(s_tb),
+    .caro(c0_tb),
+    .inletsA(A_tb),
+    .inletsB(B_tb),
+    .cari(Ci_tb)
+);
+
+// Se inicializan las entradas
+integer i, j, a;
+
+initial begin
+    A_tb=4'b0000;
+    B_tb=4'b0000;
+end
+
+initial begin
+
+// prueba
+    for(a=0;a<2;a=a+1)begin
+        Ci_tb=a;
+        for ( i=0 ;i<256; i=i+1 ) begin
+            for (j=0 ;j<16 ;j=j+1 ) begin
+            A_tb = i;
+            B_tb = j;
+            #5; 
+            end
+        end
+    end
+end
+
+initial begin: TEST_CASE
+    $dumpfile("sim_sumres.vcd");
+    $dumpvars(-1, uut);
+    #50000; 
+    $finish;
+end
+
+endmodule
+```
+
+La simulación fue realizada bajo el ambiente de "Test-Bench" usando GTKWave.
+
 #### 1.2 Diagrama
 
+El diagrama de la simulación obtenida se muestra en Figura 2, donde se puede apreciar la respuesta de la salida con respecto a las entradas. 
+
+<p align="center">
+  <img src="img/simsumres.png" alt="sim_sumres" width="60%" />
+</p>
+<p align="center"><b>Figura 2</b>, Simulación del circuito digital sumador/restador de 4 bits implementado en FPGA DE10-Lite.
+</p>
+
+Con base en las entradas, se pudo comprobar el correcto funcionamiento del circuito implementado, por lo que permitió avanzar a la fase de la práctica en laboratorio.
 
 ## Evidencias de implementación
 
@@ -187,5 +261,8 @@ A continuación de muestra el video de la práctica donde se evidencia el funcio
 
 ## Conclusiones
 
+El laboratorio No. 2 consistió en realizar la implementación de un circuito digital sumador/restador de 4 bits, por lo que fue necesario usar los modulos del sumador de 1 bit y de 4 bits respectivamente. A partir de esta fase inicial se procedió a revisar la gúia y con base en ello se implemento unas compuertas XOR que cumplen la función de hacer la conversión de los bits del puerto B en complemento a 1 y luego en complemento a 2, tambien se agregó la entrada de control "sel" que permite operar el circuito sea como sumador o como restador. Basado en el código de sumilación del sumador de 4 bits se implemento la simulación del circuito restador/sumador de la presente práctica y se obtuvieron los resultados obtenidos, permitiendo avanzar a la fase práctica, donde se pudo corroborar el correcto funcionamiento del circuito implementado para el presente laboratorio.
 
 ## Referencias
+
+[1] T. L. Floyd, <i>Fundamentos de sistemas digitales</i>, 7.ª ed. Madrid, España: Prentice Hall, 2000.
