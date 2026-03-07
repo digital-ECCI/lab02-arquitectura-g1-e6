@@ -266,3 +266,5 @@ El laboratorio No. 2 consistió en realizar la implementación de un circuito di
 ## Referencias
 
 [1] T. L. Floyd, <i>Fundamentos de sistemas digitales</i>, 7.ª ed. Madrid, España: Prentice Hall, 2000.
+
+[2] B. J LaMeres, <i>Introduction to Logic Circuits & Logic Design with Verilog</i>, 1st Ed. Gewerbestrasse, Switzerland: Springer Cham, DOI: https://doi.org/10.1007/978-3-319-53883-9, 2017.
