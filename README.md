@@ -257,7 +257,7 @@ En Figura 3, se muestra el FPGA programado durante la práctica de laboratorio p
 
 A continuación de muestra el video de la práctica donde se evidencia el funcionamiento del sumador/restador de 4 bits.
 
-[Haz clic aquí para ver el video de la práctica](vid/sres4bit.mp4)
+https://github.com/user-attachments/assets/4b7b1bcc-3f75-4464-86fd-ea9245225cc5
 
 ## Conclusiones
 
